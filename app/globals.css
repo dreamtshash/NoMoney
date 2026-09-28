@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * NoMoney tokens.
+ * Ink navy for structure, steel blue for interaction and data, ledger green
+ * for money kept, amber for "needs a decision", brick red for over/negative.
+ * Semantic colours are always paired with text or an icon — never colour alone.
+ */
+@layer base {
+  :root {
+    --background: 216 20% 97%;
+    --foreground: 220 41% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 41% 12%;
+
+    --primary: 219 46% 20%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 216 20% 93%;
+    --secondary-foreground: 220 41% 14%;
+
+    --muted: 216 20% 93%;
+    --muted-foreground: 217 13% 40%;
+
+    --accent: 208 51% 36%;
+    --accent-foreground: 0 0% 100%;
+
+    --success: 155 61% 28%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 34 100% 31%;
+    --warning-foreground: 0 0% 100%;
+
+    --destructive: 4 76% 40%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 216 17% 87%;
+    --input: 216 15% 80%;
+    --ring: 208 51% 36%;
+
+    /* Importance series */
+    --imp-essential: 219 46% 24%;
+    --imp-flexible: 208 51% 42%;
+    --imp-discretionary: 208 38% 68%;
+    --imp-unknown: 34 90% 55%;
+
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "tnum" 0;
+  }
+
+  /* Money reads in tabular figures so columns line up. */
+  .tabular-nums,
+  .money {
+    font-variant-numeric: tabular-nums;
+  }
+
+  :focus-visible {
+    outline: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--border));
+    border-radius: 999px;
+  }
+  /* Striped fill for "unknown" so it's distinguishable without colour. */
+  .stripes {
+    background-image: repeating-linear-gradient(
+      135deg,
+      hsl(var(--imp-unknown)) 0 4px,
+      hsl(var(--imp-unknown) / 0.55) 4px 8px
+    );
+  }
+}

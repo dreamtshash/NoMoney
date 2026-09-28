@@ -1,0 +1,47 @@
+{
+  "name": "nomoney",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "postinstall": "node scripts/copy-pdf-worker.mjs",
+    "verify": "tsx --tsconfig tsconfig.json scripts/verify-domain.ts && tsx --tsconfig tsconfig.json scripts/verify-import.ts",
+    "verify:pdf": "python3 scripts/make-sample-pdfs.py .sample-pdfs && tsx --tsconfig tsconfig.json scripts/verify-pdf.ts .sample-pdfs",
+    "verify:canara": "python3 scripts/make-sample-pdfs.py .sample-pdfs && tsx --tsconfig tsconfig.json scripts/verify-canara.ts .sample-pdfs",
+    "inspect:statement": "tsx --tsconfig tsconfig.json scripts/inspect-statement.ts"
+  },
+  "dependencies": {
+    "@radix-ui/react-dialog": "1.1.1",
+    "@radix-ui/react-label": "2.1.0",
+    "@radix-ui/react-progress": "1.1.0",
+    "@radix-ui/react-select": "2.1.1",
+    "@radix-ui/react-slot": "1.1.0",
+    "@radix-ui/react-tabs": "1.1.0",
+    "class-variance-authority": "0.7.0",
+    "clsx": "2.1.1",
+    "lucide-react": "0.427.0",
+    "next": "14.2.5",
+    "pdfjs-dist": "3.11.174",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "recharts": "2.12.7",
+    "tailwind-merge": "2.5.2"
+  },
+  "devDependencies": {
+    "@types/node": "20.14.13",
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
+    "autoprefixer": "10.4.19",
+    "eslint": "8.57.0",
+    "eslint-config-next": "14.2.5",
+    "postcss": "8.4.40",
+    "tailwindcss": "3.4.7",
+    "tailwindcss-animate": "1.0.7",
+    "tsx": "^4.23.15",
+    "typescript": "5.5.4"
+  }
+}
